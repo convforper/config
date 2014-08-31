@@ -53,6 +53,7 @@ set nocompatible
         set list
         "set listchars=tab:\|\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
         set listchars=tab:┆\ ,trail:·,extends:»,nbsp:. " Highlight problematic whitespace
+        set fillchars+=vert:\ 
         set history=10000       " keep 50 lines of command line history
         set completeopt=longest,menuone
         set pumheight=7   "completion pop menu count
@@ -110,11 +111,11 @@ set nocompatible
         autocmd FileType pandoc,markdown setlocal textwidth=120
         autocmd FileType java setlocal textwidth=110
         autocmd BufNewFile,BufRead *.note set filetype=notes
-        if has('gui_running')
+""        if has('gui_running')
             autocmd BufNewFile,BufRead *.md set filetype=pandoc
-        else
-            autocmd BufNewFile,BufRead *.md set filetype=markdown
-        endif
+""        else
+"            autocmd BufNewFile,BufRead *.md set filetype=markdown
+""        endif
 
         "set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
         "set splitright                  " Puts new vsplit windows to the right of the current
@@ -158,16 +159,20 @@ set nocompatible
         set t_Co=256
         if has('gui_running')
             "set guifont=Ubuntu\ Mono\ 13
-            set guifont=Monospace\ 11
+            set guifont=Monospace\ 10
             set guioptions+=mTlrbL
             set guioptions-=mTlrbL
             colorscheme Tomorrow-Dawn
+            colorscheme vim-jet
+            let g:newDawn_original = 1
             "set guicursor=i:block-Cursor/lCursor
             behave mswin
         else
             let g:molokai_origina=1
             let g:rehash256 = 1
             set t_Co=256
+            "let g:newDawn_original = 1
+            colorscheme vim-jet
             colorscheme molokai
         endif
 
@@ -368,6 +373,7 @@ set nocompatible
         Plugin 'airblade/vim-rooter'
         Plugin 'mileszs/ack.vim'
         Plugin 'sentientmachine/erics_vim_syntax_and_color_highlighting'
+        Plugin 'noahfrederick/vim-hemisu'
 
     " }
 
@@ -394,11 +400,12 @@ set nocompatible
         endif
         Plugin 'convforper/molokai'
         Plugin 'guns/xterm-color-table.vim'
+        Plugin 'guicolorscheme.vim'
         Plugin 'Lokaltog/vim-easymotion'
         Plugin 'godlygeek/csapprox'
         Plugin 'mbbill/undotree'
         "Plugin 'sjl/gundo.vim'
-        Plugin 'flazz/vim-colorschemes'
+        "Plugin 'flazz/vim-colorschemes'
         Plugin 'matchit.zip'
         Plugin 'kien/ctrlp.vim'
         Plugin 'tacahiroy/ctrlp-funky'
@@ -512,7 +519,12 @@ set nocompatible
     " Airline {
 
         if !has('gui_running')
+            let g:airline_theme='lucius'
+            let g:airline_theme='zenburn'
             let g:airline_theme='powerlineish'
+        else
+            "let g:airline_theme='lucius'
+            let g:airline_theme='zenburn'
         endif
         if !exists('g:airline_symbols')
             let g:airline_symbols = {}
@@ -598,7 +610,7 @@ set nocompatible
         let g:indentLine_char = '┆'
         let g:indentLine_fileTypeExclude = ['text','help','vimwiki','markdown','notes']
         let g:indentLine_color_dark = 0
-        let g:indentLine_color_tty_light = 0
+        let g:indentLine_color_tty_light = 20
         let g:indentLine_color_term = 240
     " }
 
@@ -814,6 +826,8 @@ set nocompatible
     " Rooter {
         let g:rooter_patterns = ['Rakefile', '.git/','.classpath','.project','pom.xml']
         map <silent> <unique> <Leader>foo <Plug>RooterChangeToRootDirectory
+    " }
+    " gitgutter {
     " }
 
 " }
