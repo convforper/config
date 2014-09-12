@@ -467,7 +467,7 @@ set nocompatible
             Plugin 'file:///~/.vim/bundle/eclim-vundle'
         " }
         " Python {
-            "Plugin 'convforper/Efficient-python-folding'
+            Plugin 'convforper/Efficient-python-folding'
             " youcompleteme自带jedi
             Plugin 'davidhalter/jedi-vim'
         " }
