@@ -464,7 +464,8 @@ set nocompatible
             Plugin 'marijnh/tern_for_vim'
         " }
         " Java {
-            Plugin 'file:///~/.vim/bundle/eclim-vundle'
+            "Plugin 'file:///~/.vim/bundle/eclim-vundle'
+            Plugin 'file:///~/.vim/bundle/eclim24'
         " }
         " Python {
             Plugin 'convforper/Efficient-python-folding'
