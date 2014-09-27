@@ -757,6 +757,7 @@ set nocompatible
 
          " Eclim {
              let g:EclimCompletionMethod = 'omnifunc'
+             nnoremap <silent> <buffer> <leader>i :JavaImport<CR>
          " }
     " }
     " Syntastic - syntax check {
