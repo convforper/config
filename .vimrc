@@ -427,39 +427,38 @@ set nocompatible
     " }
 
     " AutoComplete & Program {
-        " snippet template {
-            Plugin 'honza/vim-snippets'
-        " }
+        if !has('gui_running')
+            " snippet template {
+                Plugin 'honza/vim-snippets'
+            " }
 
-        " Check syntax {
-            Plugin 'scrooloose/syntastic'
-        " }
+            " Check syntax {
+                Plugin 'scrooloose/syntastic'
+            " }
+            " Autocomplcache & Youcompleteme {
+            if exists("g:autocomplete_switchto_neocomplcacheandother")
+                Plugin 'Shougo/neocomplcache'
 
-        " Autocomplcache & Youcompleteme {
-        if exists("g:autocomplete_switchto_neocomplcacheandother")
-            Plugin 'Shougo/neocomplcache'
+                if exists('g:autocomplete_use_jedi')
+                    Plugin 'davidhalter/jedi-vim'
+                else
+                    Plugin 'klen/python-mode'
+                endif
 
-            if exists('g:autocomplete_use_jedi')
-                Plugin 'davidhalter/jedi-vim'
+                if has('python3')
+                    Plugin 'Shougo/neosnippet'
+                else
+                    Plugin 'JazzCore/neocomplcache-ultisnips'
+                    Plugin 'SirVer/ultisnips'
+                endif
+
             else
-                Plugin 'klen/python-mode'
-            endif
-
-            if has('python3')
-                Plugin 'Shougo/neosnippet'
-            else
-                Plugin 'JazzCore/neocomplcache-ultisnips'
+                Plugin 'Valloric/YouCompleteMe'
                 Plugin 'SirVer/ultisnips'
             endif
 
-        else
-            Plugin 'Valloric/YouCompleteMe'
-            Plugin 'SirVer/ultisnips'
-        endif
-
-""            Plugin 'drmingdrmer/xptemplate'
-        " }
-
+    ""            Plugin 'drmingdrmer/xptemplate'
+            " }
         " Javascript {
             Plugin 'marijnh/tern_for_vim'
         " }
@@ -472,6 +471,8 @@ set nocompatible
             " youcompleteme自带jedi
             Plugin 'davidhalter/jedi-vim'
         " }
+        endif
+
         " Xml,Html {
             "Plugin 'sukima/xmledit'
             Plugin 'othree/xml.vim'
