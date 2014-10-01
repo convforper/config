@@ -270,6 +270,10 @@ set nocompatible
         " Jump line start
         inoremap <silent> <C-h> <C-o>I
 
+        " access normal mode
+        inoremap <C-o> <C-[>
+        snoremap <C-o> <C-[>
+
         " Insert timestamp
         noremap <Leader>5 a<C-R>=strftime("[%Y/%m/%d %H:%M:%S]")<CR><ESC>
 
@@ -427,7 +431,6 @@ set nocompatible
     " }
 
     " AutoComplete & Program {
-        if !has('gui_running')
             " snippet template {
                 Plugin 'honza/vim-snippets'
             " }
@@ -435,6 +438,7 @@ set nocompatible
             " Check syntax {
                 Plugin 'scrooloose/syntastic'
             " }
+        if !has('gui_running')
             " Autocomplcache & Youcompleteme {
             if exists("g:autocomplete_switchto_neocomplcacheandother")
                 Plugin 'Shougo/neocomplcache'
@@ -457,8 +461,8 @@ set nocompatible
                 Plugin 'SirVer/ultisnips'
             endif
 
-    ""            Plugin 'drmingdrmer/xptemplate'
-            " }
+        endif
+                "Plugin 'drmingdrmer/xptemplate'
         " Javascript {
             Plugin 'marijnh/tern_for_vim'
         " }
@@ -471,8 +475,7 @@ set nocompatible
             " youcompleteme自带jedi
             Plugin 'davidhalter/jedi-vim'
         " }
-        endif
-
+            " }
         " Xml,Html {
             "Plugin 'sukima/xmledit'
             Plugin 'othree/xml.vim'
@@ -757,7 +760,7 @@ set nocompatible
 
          " Eclim {
              let g:EclimCompletionMethod = 'omnifunc'
-             nnoremap <silent> <buffer> <leader>i :JavaImport<CR>
+             nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
          " }
     " }
     " Syntastic - syntax check {
