@@ -111,6 +111,7 @@ set nocompatible
         autocmd FileType pandoc,markdown setlocal textwidth=120
         autocmd FileType java setlocal textwidth=110
         autocmd BufNewFile,BufRead *.note set filetype=notes
+        autocmd BufNewFile,BufRead * set autochdir
 ""        if has('gui_running')
             autocmd BufNewFile,BufRead *.md set filetype=pandoc
 ""        else
@@ -397,6 +398,8 @@ set nocompatible
         Plugin 'majutsushi/tagbar'
         "Plugin 'jlanzarotta/bufexplorer'
         Plugin 'osyo-manga/vim-over'
+        Plugin 'scrooloose/nerdcommenter'
+        "Plugin 'tomtom/tcomment_vim'
 
         if !has('gui_running')
             Plugin 'Yggdroot/indentLine'
