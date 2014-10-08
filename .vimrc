@@ -111,7 +111,7 @@ set nocompatible
         autocmd FileType pandoc,markdown setlocal textwidth=120
         autocmd FileType java setlocal textwidth=110
         autocmd BufNewFile,BufRead *.note set filetype=notes
-        autocmd BufNewFile,BufRead * set autochdir
+        autocmd BufEnter * silent! lcd %:p:h
 ""        if has('gui_running')
             autocmd BufNewFile,BufRead *.md set filetype=pandoc
 ""        else
@@ -644,13 +644,18 @@ set nocompatible
         let g:ctrlp_use_caching = 1
         let g:ctrlp_clear_cache_on_exit = 0
         let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp'
-        let g:ctrlp_root_markers = ['.idea','.project','.classpath']
+        let g:ctrlp_root_markers = ['.idea','.project','.classpath','pom.xml']
         let g:ctrlp_working_path_mode = 'ra'
         let g:ctrlp_lazy_update = 0
         let g:ctrlp_show_hidden = 1
         let g:ctrlp_open_new_file = 't'
         let g:ctrlp_open_multiple_files = 'v'
         let g:ctrlp_follow_symlinks = 1
+
+        let g:ctrlp_custom_ignore = {
+          \ 'dir':  '\v[\/]\.(git|hg|svn)$|classes',
+          \ 'file': '\v\.(exe|so|dll|class|swp)$',
+          \ }
 
 
         " MRU Mode {
@@ -833,7 +838,10 @@ set nocompatible
         let g:airline_exclude_preview=1
     " }
     " Rooter {
-        let g:rooter_patterns = ['Rakefile', '.git/','.classpath','.project','pom.xml']
+
+        "let g:rooter_manual_only = 1
+        let g:rooter_autocmd_patterns = '*.java,*.py,*.js'
+        let g:rooter_patterns = ['.classpath','.project','pom.xml','*.iml']
         map <silent> <unique> <Leader>foo <Plug>RooterChangeToRootDirectory
     " }
     " gitgutter {
