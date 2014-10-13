@@ -272,8 +272,8 @@ set nocompatible
         inoremap <silent> <C-h> <C-o>I
 
         " access normal mode
-        "inoremap <C-o> <C-[>
-        "snoremap <C-o> <C-[>
+        inoremap <C-o> <C-[>
+        snoremap <C-o> <C-[>
 
         " Insert timestamp
         noremap <Leader>5 a<C-R>=strftime("[%Y/%m/%d %H:%M:%S]")<CR><ESC>
@@ -665,7 +665,6 @@ set nocompatible
 
         " Buffer Mode{
             noremap  <silent> <Leader>be :CtrlPBuffer<CR>
-            noremap  <silent> <C-@> :CtrlPBuffer<CR>
         " }
 
         " Funky Mode {
@@ -770,13 +769,6 @@ set nocompatible
          " Eclim {
              let g:EclimCompletionMethod = 'omnifunc'
              nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
-             "command II JavaImportOrganize
-             cnoreabbrev ii   JavaImportOrganize
-             cnoreabbrev impl JavaImpl
-             cnoreabbrev gs   JavaGetSet
-             cnoreabbrev ft   %JavaFormat
-             cnoreabbrev jc   JavaCorrect
-             cnoreabbrev js   JavaSearch
          " }
     " }
     " Syntastic - syntax check {
