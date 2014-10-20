@@ -272,8 +272,8 @@ set nocompatible
         inoremap <silent> <C-h> <C-o>I
 
         " access normal mode
-        inoremap <C-o> <C-[>
-        snoremap <C-o> <C-[>
+        "inoremap <C-o> <C-[>
+        "snoremap <C-o> <C-[>
 
         " Insert timestamp
         noremap <Leader>5 a<C-R>=strftime("[%Y/%m/%d %H:%M:%S]")<CR><ESC>
@@ -384,7 +384,7 @@ set nocompatible
 
     " General {
         Plugin 'scrooloose/nerdtree'
-        Plugin 'jistr/vim-nerdtree-tabs'
+        "Plugin 'jistr/vim-nerdtree-tabs'
 
         Plugin 'bling/vim-airline'
         Plugin 'airblade/vim-gitgutter'
@@ -425,7 +425,7 @@ set nocompatible
         "Plugin 'plasticboy/vim-markdown'
         "Plugin 'tpope/vim-markdown'
         Plugin 'tyru/open-browser.vim'
-        "Plugin 'file:///~/.vim/bundle/yankring_180'
+        Plugin 'file:///~/.vim/bundle/yankring_180'
         "Plugin 'szw/vim-ctrlspace'
 
         "Plugin 'spolu/dwm.vim'
@@ -509,7 +509,7 @@ set nocompatible
 
     " NERDtree {
 
-        map <silent><C-e>             <plug>NERDTreeTabsToggle<CR>
+        map <silent><C-e>            :NERDTreeToggle<CR>
         map <leader>e                :NERDTreeFind<CR>
 
         let NERDTreeShowBookmarks=0
@@ -527,8 +527,8 @@ set nocompatible
     " Airline {
 
         if !has('gui_running')
-            let g:airline_theme='lucius'
-            let g:airline_theme='zenburn'
+            "let g:airline_theme='lucius'
+            "let g:airline_theme='zenburn'
             let g:airline_theme='powerlineish'
         else
             "let g:airline_theme='lucius'
@@ -548,13 +548,10 @@ set nocompatible
         let g:airline_symbols.branch = '⭠'
         let g:airline_symbols.paste = 'Þ'
 
-
-
         let g:airline#extensions#tabline#enabled = 1
         let g:airline#extensions#tabline#tab_nr_type = 1
         let g:airline#extensions#tabline#left_sep = ''
         let g:airline#extensions#tabline#left_alt_sep = ''
-
         let g:airline#extensions#tabline#show_buffers = 0
         let g:airline#extensions#tabline#tab_min_count = 2
         let g:airline#extensions#tabline#fnamemod = ':t:.'
@@ -581,7 +578,7 @@ set nocompatible
     " }
 
     " Winresizer {
-        let g:winresizer_start_key = '<Leader>2'
+        let g:winresizer_start_key = '<Leader>be'
     " }
 
     " Note {
@@ -664,7 +661,7 @@ set nocompatible
         " }
 
         " Buffer Mode{
-            noremap  <silent> <Leader>be :CtrlPBuffer<CR>
+            noremap  <silent> <Leader>2 :CtrlPBuffer<CR>
         " }
 
         " Funky Mode {
@@ -737,11 +734,11 @@ set nocompatible
             " YoucompleteMe {
                 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>'] 
                 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>'] 
-                let g:ycm_add_preview_to_completeopt = 0
+                "let g:ycm_add_preview_to_completeopt = 0
                 let g:ycm_min_num_of_chars_for_completion = 2
-                let g:ycm_complete_in_comments = 1
-                let g:ycm_collect_identifiers_from_tags_files = 1
-                let g:ycm_seed_identifiers_with_syntax = 1
+                "let g:ycm_complete_in_comments = 1
+                "let g:ycm_collect_identifiers_from_tags_files = 1
+                "let g:ycm_seed_identifiers_with_syntax = 1
                 let g:ycm_global_ycm_extra_conf = '/home/wkc/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
                 let g:ycm_filetype_blacklist = {
                       \ 'tagbar' : 1,
@@ -768,7 +765,16 @@ set nocompatible
 
          " Eclim {
              let g:EclimCompletionMethod = 'omnifunc'
-             nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+             autocmd FileType java cnoreabbrev <buffer> II   JavaImportOrganize
+             autocmd FileType java cnoreabbrev <buffer> IM   JavaImpl
+             autocmd FileType java cnoreabbrev <buffer> GS   JavaGetSet
+             autocmd FileType java cnoreabbrev <buffer> FT   %JavaFormat
+             autocmd FileType java cnoreabbrev <buffer> JC   JavaCorrect
+             autocmd FileType java cnoreabbrev <buffer> JS   JavaSearch
+             autocmd FileType java cnoreabbrev <buffer> PR   ProjectRefresh
+             let g:EclimLoggingDisabled = 1
+             let g:EclimLog4jValidate = 0
+
          " }
     " }
     " Syntastic - syntax check {
@@ -845,6 +851,11 @@ set nocompatible
         map <silent> <unique> <Leader>foo <Plug>RooterChangeToRootDirectory
     " }
     " gitgutter {
+    " }
+    " yankring {
+        nnoremap <silent> <Leader>3 :YRShow<CR>
+        let g:yankring_replace_n_pkey = ''
+        let g:yankring_replace_n_nkey = ''
     " }
 
 " }
