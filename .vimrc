@@ -36,7 +36,8 @@ set nocompatible
         set backspace=indent,eol,start whichwrap+=<,>,[,]
         "set backspace=eol,start
         set autochdir
-        set smartindent
+        "set smartindent
+        set cindent
         set nomore
         set wildignorecase
         set ignorecase
@@ -384,7 +385,7 @@ set nocompatible
 
     " General {
         Plugin 'scrooloose/nerdtree'
-        "Plugin 'jistr/vim-nerdtree-tabs'
+        Plugin 'jistr/vim-nerdtree-tabs'
 
         Plugin 'bling/vim-airline'
         Plugin 'airblade/vim-gitgutter'
@@ -460,7 +461,8 @@ set nocompatible
                 endif
 
             else
-                Plugin 'Valloric/YouCompleteMe'
+                "Plugin 'Valloric/YouCompleteMe'
+                Plugin 'file:///~/.vim/bundle/YouCompleteMe'
                 Plugin 'SirVer/ultisnips'
             endif
 
@@ -470,7 +472,6 @@ set nocompatible
             Plugin 'marijnh/tern_for_vim'
         " }
         " Java {
-            "Plugin 'file:///~/.vim/bundle/eclim-vundle'
             Plugin 'file:///~/.vim/bundle/eclim24'
         " }
         " Python {
@@ -483,6 +484,10 @@ set nocompatible
             "Plugin 'sukima/xmledit'
             Plugin 'othree/xml.vim'
             Plugin 'mattn/emmet-vim'
+        " }
+        " gradle {
+            Plugin 'tfnico/vim-gradle'
+            "Plugin 'rdolgushin/groovy.vim'
         " }
     " }
 
@@ -542,9 +547,10 @@ set nocompatible
         let g:airline_left_alt_sep = '⮁'
         let g:airline_right_sep = '⮂'
         let g:airline_right_alt_sep = '⮃' 
-        let g:airline_branch_prefix     = '⭠'
+        "let g:airline_branch_prefix     = '⭠'
+        let g:airline_symbols.branch = ''
         let g:airline_symbols.readonly = '⭤'
-        let g:airline_linecolumn_prefix = '⭡'
+        let g:airline_symbols.linenr = ''
         let g:airline_symbols.branch = '⭠'
         let g:airline_symbols.paste = 'Þ'
 
@@ -754,6 +760,8 @@ set nocompatible
 
                 nnoremap <leader>jd :YcmCompleter GoTo<CR>
                  "let g:ycm_key_invoke_completion = '<C-j>'
+                let g:ycm_server_keep_logfiles = 1
+                let g:ycm_server_log_level = 'debug'
 
              " }
         endif
@@ -766,14 +774,19 @@ set nocompatible
          " Eclim {
              let g:EclimCompletionMethod = 'omnifunc'
              autocmd FileType java cnoreabbrev <buffer> II   JavaImportOrganize
+             autocmd FileType java cnoreabbrev <buffer> MM   JavaImport
              autocmd FileType java cnoreabbrev <buffer> IM   JavaImpl
              autocmd FileType java cnoreabbrev <buffer> GS   JavaGetSet
+             autocmd FileType java cnoreabbrev <buffer> GG   JavaGet
+             autocmd FileType java cnoreabbrev <buffer> SS   JavaSet
              autocmd FileType java cnoreabbrev <buffer> FT   %JavaFormat
              autocmd FileType java cnoreabbrev <buffer> JC   JavaCorrect
              autocmd FileType java cnoreabbrev <buffer> JS   JavaSearch
              autocmd FileType java cnoreabbrev <buffer> PR   ProjectRefresh
+             autocmd FileType java cnoreabbrev <buffer> NC   JavaNew class
              let g:EclimLoggingDisabled = 1
              let g:EclimLog4jValidate = 0
+             let g:EclimGroovyValidate = 0
 
          " }
     " }
@@ -856,7 +869,13 @@ set nocompatible
         nnoremap <silent> <Leader>3 :YRShow<CR>
         let g:yankring_replace_n_pkey = ''
         let g:yankring_replace_n_nkey = ''
+        let g:yankring_history_dir = '/home/wkc/.vim/.yankring'
     " }
+    " TagBar {
+        nnoremap <silent> <Leader>4 :Tagbar<CR>
+        let g:tagbar_left = 1
+        let g:tagbar_width = 30
+    "
 
 " }
 
