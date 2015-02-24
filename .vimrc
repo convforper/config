@@ -745,7 +745,7 @@ set nocompatible
                 "let g:ycm_complete_in_comments = 1
                 "let g:ycm_collect_identifiers_from_tags_files = 1
                 "let g:ycm_seed_identifiers_with_syntax = 1
-                let g:ycm_global_ycm_extra_conf = '/home/wkc/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+                let g:ycm_global_ycm_extra_conf = $HOME.'/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
                 let g:ycm_filetype_blacklist = {
                       \ 'tagbar' : 1,
                       \ 'qf' : 1,
@@ -869,7 +869,7 @@ set nocompatible
         nnoremap <silent> <Leader>3 :YRShow<CR>
         let g:yankring_replace_n_pkey = ''
         let g:yankring_replace_n_nkey = ''
-        let g:yankring_history_dir = '/home/wkc/.vim/.yankring'
+        let g:yankring_history_dir = $HOME.'/.vim/.yankring'
     " }
     " TagBar {
         nnoremap <silent> <Leader>4 :Tagbar<CR>
