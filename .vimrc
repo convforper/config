@@ -35,7 +35,7 @@ set nocompatible
 
         set backspace=indent,eol,start whichwrap+=<,>,[,]
         "set backspace=eol,start
-        set autochdir
+        set noautochdir
         "set smartindent
         set cindent
         set nomore
@@ -66,6 +66,7 @@ set nocompatible
         else
             set laststatus=2
             "set colorcolumn=121
+            set lazyredraw
             set synmaxcol=200
         endif
         "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -170,12 +171,14 @@ set nocompatible
             "set guicursor=i:block-Cursor/lCursor
             behave mswin
         else
-            let g:molokai_origina=1
+            "let g:molokai_origina=1
             let g:rehash256 = 1
             set t_Co=256
             "let g:newDawn_original = 1
-            colorscheme vim-jet
-            colorscheme molokai
+            "colorscheme vim-jet
+            "colorscheme molokai
+            set background=dark
+            colorscheme gruvbox
         endif
 
 
@@ -434,13 +437,17 @@ set nocompatible
 
     " }
 
+    " theme {
+        Plugin 'morhetz/gruvbox'
+    " }
+
     " AutoComplete & Program {
             " snippet template {
                 Plugin 'honza/vim-snippets'
             " }
 
             " Check syntax {
-                Plugin 'scrooloose/syntastic'
+                "Plugin 'scrooloose/syntastic'
             " }
         if !has('gui_running')
             " Autocomplcache & Youcompleteme {
@@ -461,8 +468,8 @@ set nocompatible
                 endif
 
             else
-                "Plugin 'Valloric/YouCompleteMe'
-                Plugin 'file:///~/.vim/bundle/YouCompleteMe'
+                Plugin 'Valloric/YouCompleteMe'
+                "Plugin 'file:///~/.vim/bundle/YouCompleteMe'
                 Plugin 'SirVer/ultisnips'
             endif
 
@@ -514,7 +521,7 @@ set nocompatible
 
     " NERDtree {
 
-        map <silent><C-e>            :NERDTreeToggle<CR>
+        "map <silent><C-e>            :NERDTreeToggle<CR>
         map <leader>e                :NERDTreeFind<CR>
 
         let NERDTreeShowBookmarks=0
@@ -534,7 +541,8 @@ set nocompatible
         if !has('gui_running')
             "let g:airline_theme='lucius'
             "let g:airline_theme='zenburn'
-            let g:airline_theme='powerlineish'
+            "let g:airline_theme='powerlineish'
+            let g:airline_theme='gruvbox'
         else
             "let g:airline_theme='lucius'
             let g:airline_theme='zenburn'
@@ -784,9 +792,10 @@ set nocompatible
              autocmd FileType java cnoreabbrev <buffer> JS   JavaSearch
              autocmd FileType java cnoreabbrev <buffer> PR   ProjectRefresh
              autocmd FileType java cnoreabbrev <buffer> NC   JavaNew class
-             let g:EclimLoggingDisabled = 1
-             let g:EclimLog4jValidate = 0
-             let g:EclimGroovyValidate = 0
+             let g:EclimLoggingDisabled=1
+             let g:EclimLog4jValidate=0
+             let g:EclimGroovyValidate=0
+             let g:EclimJavascriptValidate=0
 
          " }
     " }
@@ -800,7 +809,7 @@ set nocompatible
     " }
     " Emmet {
         let g:user_emmet_install_global = 0
-        autocmd FileType html,css,xml,ant EmmetInstall
+        autocmd FileType html,css,xml,ant,jsp EmmetInstall
     " }
     " DelimitMate {
         let delimitMate_expand_cr = 1
@@ -876,6 +885,15 @@ set nocompatible
         let g:tagbar_left = 1
         let g:tagbar_width = 30
     "
+    " gruvbox {
+        nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+        nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+        nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+
+        nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+        nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+        nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+    " }
 
 " }
 
