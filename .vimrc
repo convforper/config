@@ -128,7 +128,6 @@ set nocompatible
         "set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
         ""set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 
-        "autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml,perl autocmd BufWritePre <buffer> 
 " }
 
 " Lanuage Setting {
@@ -179,7 +178,6 @@ set nocompatible
         "hi CursorLine term=bold cterm=bold guibg=Grey40
         "hi LineNr     ctermfg=250 ctermbg=236
         "hi Comment    ctermfg=246
-        "
         "highlight clear SignColumn      " SignColumn should match background
         "highlight clear LineNr          " Current line number row will have same background color in relative mode
         "highlight clear CursorLineNr    " Remove highlight color from current line number
@@ -602,7 +600,6 @@ set nocompatible
         let g:indentLine_fileTypeExclude = ['text','help','vimwiki','markdown','notes']
         let g:indentLine_color_dark = 0
         let g:indentLine_color_tty_light = 20
-        
         let g:indentLine_color_term = 250
         "let g:indentLine_color_term = 240
         "let g:indentLine_color_term = 190
